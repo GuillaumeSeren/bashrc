@@ -12,12 +12,12 @@
 [ -z "$PS1" ] && return
 
 # include set file
-source $HOME/.bashrc.set.sh
+source $PWD/.bashrc.set.sh
 # include aliases file
-source $HOME/.bashrc.alias.sh
+source $PWD/.bashrc.alias.sh
 # include history file
-source $HOME/.bashrc.history.sh
+source $PWD/.bashrc.history.sh
 # include prompt file
-source $HOME/.bashrc.prompt.sh
+source $PWD/.bashrc.prompt.sh
 # include function file
-source $HOME/.bashrc.function.sh
+source $PWD/.bashrc.function.sh
