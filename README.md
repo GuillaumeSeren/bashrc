@@ -15,9 +15,9 @@ so I try to get quality and efficient solution.
 ----
 You can clone this repos in your home directory, like:
 ```
-$ git clone https://github.com/GuillaumeSeren/bashrc ~/.bash
+$ git clone https://github.com/GuillaumeSeren/bashrc ~/.bashrc.d
 # Add a link to the bashrc
-$ ln -s ~/.bashrc ~/.bashrc.d/bashrc
+$ ln -s ~/.bashrc ~/.bashrc.d/bashrc.sh
 # Then reload your bash profile
 $ . ~/.bashrc
 ```
