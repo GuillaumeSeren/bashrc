@@ -11,13 +11,14 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+BASHRCD=$HOME"/.bashrc.d"
 # include set file
-source $PWD/.bashrc.set.sh
+source $BASHRCD/.bashrc.set.sh
 # include aliases file
-source $PWD/.bashrc.alias.sh
+source $BASHRCD/.bashrc.alias.sh
 # include history file
-source $PWD/.bashrc.history.sh
+source $BASHRCD/.bashrc.history.sh
 # include prompt file
-source $PWD/.bashrc.prompt.sh
+source $BASHRCD/.bashrc.prompt.sh
 # include function file
-source $PWD/.bashrc.function.sh
+source $BASHRCD/.bashrc.function.sh
