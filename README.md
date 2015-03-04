@@ -16,19 +16,22 @@ You can clone this repos in your home directory, like:
 ```
 $ git clone https://github.com/GuillaumeSeren/bashrc ~/.bashrc.d
 # Add a link to the bashrc
-$ ln -s ~/.bashrc ~/.bashrc.d/bashrc.sh
+$ ln -s ~/.bashrc.d/bashrc.sh ~/.bashrc
 # Then reload your bash profile
 $ . ~/.bashrc
 ```
 
 ## Structure:
 The Bash configuration is broken into several files:
-* .bashrc.sh
-* .bashrc.set.sh
-* .bashrc.alias.sh
-* .bashrc.history.sh
-* .bashrc.prompt.sh
-* .bashrc.function.sh
+
+File                  | Description
+----------------------|------------
+`.bashrc.sh`          | Central **bash** file, source the others.
+`.bashrc.set.sh`      | **Set** the general variables.
+`.bashrc.alias.sh`    | Define the **alias**.
+`.bashrc.function.sh` | Add the **functions**.
+`.bashrc.history.sh`  | Configure the **history** feature.
+`.bashrc.prompt.sh`   | Set the **prompt**.
 
 ## Who ?
 Mainly useful for server and headless system where you don't want zsh,
