@@ -11,16 +11,16 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Set the config directory
-BASHRCD=$HOME"/.bashrc.d"
+# First resolve the bashrc link
+BASH_REAL_PATH=$(dirname $(realpath ~/.bashrc))
 
 # include set file
-source $BASHRCD/bashrc.set.sh
+source $BASH_REAL_PATH/bashrc.set.sh
 # include aliases file
-source $BASHRCD/bashrc.alias.sh
+source $BASH_REAL_PATH/bashrc.alias.sh
 # include history file
-source $BASHRCD/bashrc.history.sh
+source $BASH_REAL_PATH/bashrc.history.sh
 # include prompt file
-source $BASHRCD/bashrc.prompt.sh
+source $BASH_REAL_PATH/bashrc.prompt.sh
 # include function file
-source $BASHRCD/bashrc.function.sh
+source $BASH_REAL_PATH/bashrc.function.sh
