@@ -65,5 +65,8 @@ function __prompt_command() {
         # no color mode
         PS1="($bBashStatus|\!)\u@\h:\w $(__git_ps1 "(%s)")\n $ "
     fi
+
+    # Echo the hostname
+    echo -ne "\033k$HOSTNAME\033\\"
 }
 export PROMPT_COMMAND=__prompt_command  # Func to gen PS1 after CMDs

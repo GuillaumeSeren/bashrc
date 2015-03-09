@@ -19,12 +19,12 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-# ls
-alias l='ls -CF'
-alias la='ls -A'
+# List files
+# Group dir first and end it with /
+alias ls='ls --color=always -hFH --group-directories-first'
+alias l='ls -CFlh'
 alias ll='ls -alh'
-alias lsd='ls -d */'
-alias lll='ls -la | less'
+alias la='ls -A'
 
 # grep
 alias cgrep='grep --color=always'
@@ -49,7 +49,8 @@ alias dud='du --max-depth=0'
 alias df='df -kTh'
 
 # Admin
-alias log='tail -f /var/log/mail.log'
+alias logmail='tail -f /var/log/mail.log'
+alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 alias stat="echo ' ' && uname -a && echo ' '&& uptime &&echo ' '&& df && echo ' '"
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args|less'
 
