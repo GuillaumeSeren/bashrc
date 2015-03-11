@@ -2,6 +2,7 @@ Bash configuration
 ==================
 
 " Simple and efficient bash setup for most uses. "
+![alt tag](https://github.com/GuillaumeSeren/bashrc/img/bashconfig_prompt.png)
 
 ## Why ?
 Because I am lazy of copying it everywhere,
