@@ -2,6 +2,7 @@ Bash configuration
 ==================
 
 " Simple and efficient bash setup for most uses. "
+![alt tag](https://github.com/GuillaumeSeren/bashrc/blob/upgrade/img/bashconfig_prompt.png)
 
 ## Why ?
 Because I am lazy of copying it everywhere,
@@ -43,4 +44,4 @@ If you find it useful, and would like to add your tips and tricks in it,
 feel free to fork this project and fill a __Pull Request__.
 
 ## Licence
-TODO !!
+The project is GPLv3.
