@@ -131,6 +131,8 @@ function BashUpgrade() {
         # move to the right place
         cd $BASH_REAL_PATH
         git pull origin master
+        # Reload !
+        bash ~/.bashrc
     else
         echo "No upgrade available"
     fi
