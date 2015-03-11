@@ -124,7 +124,7 @@ function BashUpgrade() {
     # we first fetch origin
     BASH_CONFIG_FETCHED=$(BashUpdate "1")
     BASH_CONFIG_UPDATE_NEEDED=$(BashUpgradeNeeded "1")
-    if [[ $BASH_CONFIG_FETCHED == "1" &&
+    if [[ -n $BASH_CONFIG_FETCHED &&
           $BASH_CONFIG_UPDATE_NEEDED == "1" ]]; then
         #@TODO: Add a function to count upgrade before doing it
         echo "Upgrading your BashConfig"
