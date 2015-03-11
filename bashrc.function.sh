@@ -133,6 +133,7 @@ function BashUpgrade() {
         git pull origin master
         # Reload !
         bash ~/.bashrc
+        echo "bashConf reloaded !"
     else
         echo "No upgrade available"
     fi
