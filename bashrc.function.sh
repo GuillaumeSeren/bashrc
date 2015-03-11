@@ -18,7 +18,7 @@ function Repeat() {
 }
 
 # Unpack the file given in arg
-Extract() {
+function Extract() {
     local FILENAME="${1}"
     local FILEEXTENSION=`echo ${1} | cut -d. -f2-`
     case "$FILEEXTENSION" in
@@ -49,4 +49,32 @@ Extract() {
         rar)
             unrar x "$FILENAME";;
     esac
+}
+
+# Bash update
+#@TODO: we need a silent call to be called by upgrade
+function BashUpdate() {
+    echo "-> Update Bash from git"
+    # move to the right place
+    cd $BASH_REAL_PATH
+    # Return the last local sha1
+    BASH_PROFILE_VERSION=$(git rev-parse HEAD)
+    echo "bashConfig is :$BASH_PROFILE_VERSION"
+    git fetch origin
+    BASH_CONFIG_HEAD_HASH=$(git log HEAD..origin/master --oneline)
+    if [[ "${BASH_CONFIG_HEAD_HASH}" != "" ]];then
+        # You are NOT up to date
+        echo "You are NOT up-to-date"
+        echo "Upgrade your config, type: bashUpgrade"
+    else
+        # You got the latest version
+        echo "You are up-to-date ;)"
+    fi
+}
+
+function BashUpgrade() {
+    echo "Upgrading your BashConfig"
+    # move to the right place
+    cd $BASH_REAL_PATH
+    git pull origin master
 }
