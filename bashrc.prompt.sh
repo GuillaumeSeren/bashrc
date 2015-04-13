@@ -11,26 +11,6 @@ function __prompt_command() {
     # This needs to be first
     local EXIT="$?"
 
-    # Define color for keep the PS1 clean :
-    BLACK=$(tput setaf 0)
-    # Error color
-    RED=$(tput setaf 1)
-    # Ok color
-    GREEN=$(tput setaf 2)
-    YELLOW=$(tput setaf 3)
-    LIME_YELLOW=$(tput setaf 190)
-    BLUE=$(tput setaf 4)
-    POWDER_BLUE=$(tput setaf 153)
-    MAGENTA=$(tput setaf 5)
-    CYAN=$(tput setaf 6)
-    WHITE=$(tput setaf 7)
-    BRIGHT=$(tput bold)
-    NORMAL=$(tput sgr0)
-    BLINK=$(tput blink)
-    REVERSE=$(tput smso)
-    BOLD=$(tput bold)
-    UNDERLINE=$(tput smul)
-
     # set variable identifying the chroot you work in (used in the prompt below)
     if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
         debian_chroot=$(cat /etc/debian_chroot)
@@ -51,22 +31,46 @@ function __prompt_command() {
         fi
     fi
 
+    # Only define color if needed, provide free colorless mode.
+    if [[ -n $color_prompt && $color_prompt == "yes" ]]; then
+        # Define color for keep the PS1 clean :
+        BLACK=$(tput setaf 0)
+        # Error color
+        RED=$(tput setaf 1)
+        # Ok color
+        GREEN=$(tput setaf 2)
+        YELLOW=$(tput setaf 3)
+        LIME_YELLOW=$(tput setaf 190)
+        BLUE=$(tput setaf 4)
+        POWDER_BLUE=$(tput setaf 153)
+        MAGENTA=$(tput setaf 5)
+        CYAN=$(tput setaf 6)
+        WHITE=$(tput setaf 7)
+        BRIGHT=$(tput bold)
+        NORMAL=$(tput sgr0)
+        BLINK=$(tput blink)
+        REVERSE=$(tput smso)
+        BOLD=$(tput bold)
+        UNDERLINE=$(tput smul)
+    fi
+
     # Check the last error code status
     if [ $EXIT != 0 ]; then
-        bBashStatus="\[$RED\]KO $EXIT"
+        colorError="\[$RED\]"
+        bashStatus="${colorError}KO $EXIT"
+        bashNumber="${colorError}\!"
     else
-        bBashStatus="\[$GREEN\]OK $EXIT"
+        colorSuccess="\[$GREEN\]"
+        bashStatus="${colorSuccess}OK $EXIT"
+        bashNumber="${colorSuccess}\!"
     fi
 
     #@TODO: Check git install in the system
+    # Detect git status
     GIT_PS1_SHOWDIRTYSTATE=true
-    if [[ -n $color_prompt && $color_prompt = "yes" ]]; then
-        # Color mode
-        PS1="\[$BLUE\](\[$NORMAL\]$bBashStatus\[$BLUE\]|\[$RED\]\!\[$BLUE\])\[$GREEN\]\u\[$BLUE\]@\[$GREEN\]\h\[$BLUE\]:\[$GREEN\]\w\[$BLUE\] $(__git_ps1 "(%s)")\n\[$BLUE\]$ \[$NORMAL\]"
-    else
-        # no color mode
-        PS1="($bBashStatus|\!)\u@\h:\w $(__git_ps1 "(%s)")\n $ "
-    fi
+    gitStatus="\[$GREEN\]"$(__git_ps1 "(%s)")
+    # Prompt
+    PS1="\[$BLUE\](\[$NORMAL\]${bashStatus}\[$BLUE\]|${bashNumber}\[$BLUE\])\[$YELLOW\]\u\[$BLUE\]@\[$YELLOW\]\h\[$BLUE\]:\[$YELLOW\]\w $gitStatus\[$BLUE\]\n$ \[$NORMAL\]"
 
     # Echo the hostname, for screen/tmux
     echo -ne "\033k$HOSTNAME\033\\"
