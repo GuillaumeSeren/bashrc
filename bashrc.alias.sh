@@ -51,14 +51,8 @@ alias df='df -kTh'
 # Admin
 alias logmail='tail -f /var/log/mail.log'
 alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
-alias stat="echo ' ' && uname -a && echo ' '&& uptime &&echo ' '&& df && echo ' '"
+alias stat="echo ' ' && uname -a && echo ' '&& uptime && echo ' ' && df && echo ' '"
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args|less'
-
-# Debian
-alias up='sudo aptitude update && sudo aptitude safe-upgrade && sudo checkrestart'
-alias cl='sudo aptitude remove --purge `deborphan` && sudo aptitude autoclean'
-alias se='sudo aptitude search'
-alias ins='sudo aptitude install'
 
 # shortcut
 alias ps='ps aux'

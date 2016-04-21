@@ -24,3 +24,5 @@ BASH_REAL_PATH="$(dirname "$(readlink -f ~/.bashrc)")"
 [ -f "$BASH_REAL_PATH"/bashrc.prompt.sh ] &&    source "$BASH_REAL_PATH"/bashrc.prompt.sh
 # source function file
 [ -f "$BASH_REAL_PATH"/bashrc.function.sh ] &&  source "$BASH_REAL_PATH"/bashrc.function.sh
+# source local user file
+[ -f "$BASH_REAL_PATH"/bashrc.local.sh ] &&     source "$BASH_REAL_PATH"/bashrc.local.sh
