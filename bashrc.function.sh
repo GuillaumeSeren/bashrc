@@ -8,6 +8,7 @@
 # Bash Function definition file
 # ---------------------------------------------
 
+# FUNCTION Repeat() {{{1
 # repeat n times command
 function Repeat() {
     local i max
@@ -17,6 +18,7 @@ function Repeat() {
     done
 }
 
+# FUNCTION Extract() {{{1
 # Unpack the file given in arg
 function Extract() {
     local FILENAME="${1}"
@@ -51,13 +53,11 @@ function Extract() {
     esac
 }
 
-# Bash update
+# FUNCTION BashUpdate() {{{1
 # Refresh the git repo for news
 function BashUpdate() {
     if [[ -n "$1" && "$1" != "false" && "$1" == "1" ]]; then
         # it is a silent call
-        #echo "stay silent"
-        #exit 1
         BASH_CONFIG_FETCH_SILENT="$1"
     fi
     # it is a direct call
@@ -86,12 +86,11 @@ function BashUpdate() {
     fi
 }
 
+# FUNCTION BashUpgradeNeeded() {{{1
 # Check if you need/should upgrade
 function BashUpgradeNeeded() {
     if [[ -n "$1" && "$1" != "false" && "$1" == "1" ]]; then
         # it is a silent call
-        #echo "stay silent"
-        #exit 1
         BASH_CONFIG_FETCH_SILENT="$1"
     fi
     # move to the right place
@@ -105,7 +104,6 @@ function BashUpgradeNeeded() {
             echo "Upgrade your config, type: bashUpgrade"
         else
             echo "1"
-            #echo $BASH_CONFIG_FETCH_STATUS
         fi
     else
         # You got the latest version
@@ -114,16 +112,16 @@ function BashUpgradeNeeded() {
             echo "You are up-to-date ;)"
         else
             echo "0"
-            #echo $BASH_CONFIG_FETCH_STATUS
         fi
     fi
 }
 
+# FUNCTION BashUpgrade() {{{1
 # Upgrade your BashConfig
 function BashUpgrade() {
     # we first fetch origin
-    BASH_CONFIG_FETCHED=$(BashUpdate "1")
-    BASH_CONFIG_UPDATE_NEEDED=$(BashUpgradeNeeded "1")
+    BASH_CONFIG_FETCHED="$(BashUpdate "1")"
+    BASH_CONFIG_UPDATE_NEEDED="$(BashUpgradeNeeded "1")"
     if [[ -n $BASH_CONFIG_FETCHED &&
           $BASH_CONFIG_UPDATE_NEEDED == "1" ]]; then
         #@TODO: Add a function to count upgrade before doing it
@@ -132,8 +130,8 @@ function BashUpgrade() {
         cd $BASH_REAL_PATH
         git pull origin master
         # Reload !
+        echo "Reloading Bash configuration"
         bash ~/.bashrc
-        echo "bashConf reloaded !"
     else
         echo "No upgrade available"
     fi

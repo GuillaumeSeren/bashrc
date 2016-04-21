@@ -6,11 +6,17 @@ Bash configuration
 
 ## Why ?
 Because I am lazy of copying it everywhere,
-I switch some time ago to zsh and would like to keep this bash setup updated.
+I switch some time ago to zsh but I still use it on some remote server.
 
 ## Philosophy :
 I like the `KISS` mantra (*Keep It Simple, Stupid*),
 so I try to get quality and efficient solution.
+
+## Local configuration
+Sometimes you need to override several alias, or add your own,
+so I try to add only generic alias in the main files,
+the specific things are in the bashrc.local,
+this file provide you a place to add you own configuration.
 
 ## Usage & Installation :
 You can clone this repos in your home directory, like:
@@ -33,6 +39,7 @@ File                  | Description
 `.bashrc.function.sh` | Add the **functions**.
 `.bashrc.history.sh`  | Configure the **history** feature.
 `.bashrc.prompt.sh`   | Set the **prompt**.
+`.bashrc.local.sh`    | Ass some **user configuration**.
 
 ## Who ?
 Mainly useful for server and headless system where you don't want zsh,

@@ -12,15 +12,17 @@
 [ -z "$PS1" ] && return
 
 # First resolve the bashrc link
-BASH_REAL_PATH=$(dirname $(readlink -f ~/.bashrc))
+BASH_REAL_PATH="$(dirname "$(readlink -f ~/.bashrc)")"
 
-# include set file
-source $BASH_REAL_PATH/bashrc.set.sh
-# include aliases file
-source $BASH_REAL_PATH/bashrc.alias.sh
-# include history file
-source $BASH_REAL_PATH/bashrc.history.sh
-# include prompt file
-source $BASH_REAL_PATH/bashrc.prompt.sh
-# include function file
-source $BASH_REAL_PATH/bashrc.function.sh
+# source set file
+[ -f "$BASH_REAL_PATH"/bashrc.set.sh ] &&       source "$BASH_REAL_PATH"/bashrc.set.sh
+# source aliases file
+[ -f "$BASH_REAL_PATH"/bashrc.alias.sh ] &&     source "$BASH_REAL_PATH"/bashrc.alias.sh
+# source history file
+[ -f "$BASH_REAL_PATH"/bashrc.history.sh ] &&   source "$BASH_REAL_PATH"/bashrc.history.sh
+# source prompt file
+[ -f "$BASH_REAL_PATH"/bashrc.prompt.sh ] &&    source "$BASH_REAL_PATH"/bashrc.prompt.sh
+# source function file
+[ -f "$BASH_REAL_PATH"/bashrc.function.sh ] &&  source "$BASH_REAL_PATH"/bashrc.function.sh
+# source local user file
+[ -f "$BASH_REAL_PATH"/bashrc.local.sh ] &&     source "$BASH_REAL_PATH"/bashrc.local.sh
