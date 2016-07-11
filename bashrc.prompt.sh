@@ -11,11 +11,6 @@ function __prompt_command() {
     # This needs to be first
     local EXIT="$?"
 
-    # set variable identifying the chroot you work in (used in the prompt below)
-    if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-        debian_chroot=$(cat /etc/debian_chroot)
-    fi
-
     # uncomment for a colored prompt, if the terminal has the capability; turned
     # off by default to not distract the user: the focus in a terminal window
     # should be on the output of commands, not on the prompt
@@ -65,10 +60,16 @@ function __prompt_command() {
         bashNumber="${colorSuccess}\!"
     fi
 
-    #@TODO: Check git install in the system
-    # Detect git status
-    GIT_PS1_SHOWDIRTYSTATE=true
-    gitStatus="\[$GREEN\]"$(__git_ps1 "(%s)")
+    if [ -n "$(type -t __git_ps1)" ]; then
+        # Detect git status
+        GIT_PS1_SHOWDIRTYSTATE=true
+        gitStatus="\[$GREEN\]"$(__git_ps1 "(%s)")
+    else
+        # If the function is not defined (yet) you can load it in the
+        # bashrc.local-user.sh and recall the function __prompt_command()
+        gitStatus=''
+    fi
+
     # Prompt
     PS1="\[$BLUE\](\[$NORMAL\]${bashStatus}\[$BLUE\]|${bashNumber}\[$BLUE\])\[$YELLOW\]\u\[$BLUE\]@\[$YELLOW\]\h\[$BLUE\]:\[$YELLOW\]\w $gitStatus\[$BLUE\]\n$ \[$NORMAL\]"
 
