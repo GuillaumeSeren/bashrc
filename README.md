@@ -6,7 +6,7 @@ Bash configuration
 
 ## Why ?
 Because I am lazy of copying it everywhere,
-I switch some time ago to zsh but I still use it on some remote server.
+I switched some time ago to zsh but I still use bash on most remote server.
 
 ## Philosophy :
 I like the `KISS` mantra (*Keep It Simple, Stupid*),
