@@ -48,17 +48,9 @@ alias dud='du --max-depth=0'
 # df
 alias df='df -kTh'
 
-# Admin
-# @FIXME This should go in the user conf
-alias logmail='tail -f /var/log/mail.log'
-alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
-alias stat="echo ' ' && uname -a && echo ' '&& uptime && echo ' ' && df && echo ' '"
-alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args|less'
-
 # shortcut
 alias ps='ps aux'
 alias cp='cp -i'
 alias mv='mv -iv'
-alias build='./configure && make'
 alias removeemptylines="sed -i -e '/^$/d'"
 alias epoch='date +%s'

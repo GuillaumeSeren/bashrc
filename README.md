@@ -12,12 +12,6 @@ I switched some time ago to zsh but I still use bash on most remote server.
 I like the `KISS` mantra (*Keep It Simple, Stupid*),
 so I try to get quality and efficient solution.
 
-## Local configuration
-Sometimes you need to override several alias, or add your own,
-so I try to add only generic alias in the main files,
-the specific things are in the bashrc.local,
-this file provide you a place to add you own configuration.
-
 ## Usage & Installation :
 You can clone this repos in your home directory, like:
 ```
@@ -31,15 +25,39 @@ $ . ~/.bashrc
 ## Structure:
 The Bash configuration is broken into several files:
 
-File                  | Description
-----------------------|------------
-`.bashrc.sh`          | Central **bash** file, source the others.
-`.bashrc.set.sh`      | **Set** the general variables.
-`.bashrc.alias.sh`    | Define the **alias**.
-`.bashrc.function.sh` | Add the **functions**.
-`.bashrc.history.sh`  | Configure the **history** feature.
-`.bashrc.prompt.sh`   | Set the **prompt**.
-`.bashrc.local.sh`    | Ass some **user configuration**.
+File                          | Description
+------------------------------|------------
+`.bashrc.sh`                  | Central **bash** file, source the others.
+`.bashrc.set.sh`              | **Set** the general variables.
+`.bashrc.alias.sh`            | Define the **alias**.
+`.bashrc.function.sh`         | Add the **functions**.
+`.bashrc.history.sh`          | Configure the **history** feature.
+`.bashrc.prompt.sh`           | Set the **prompt**.
+`.bashrc.local.sh`            | Ass some **user configuration**.
+`user.d/bashrc.local-user.sh` | User config file, customize and more.
+
+## Personalize
+You can add your own tweaks, and overide any alias / functions,
+defined in the basic setup, here how to do it.
+
+Create a file named bashrc.local-user.sh in the user config directory 'user.d'
+```
+$ touch user.d/bashrc.local-user.sh
+```
+After in the file you can source some lib, like Debian of Gentoo file,
+and define your own alias and functions.
+
+Below a sample of a bashrc.local-user.sh
+```
+# Source the lib-gentoo
+[ -f "$BASH_REAL_PATH"/bashrc.lib-gentoo.sh ] && source "$BASH_REAL_PATH"/bashrc.lib-gentoo.sh
+
+# Define an awesome alias
+alias hello="echo hello from my user alias"
+
+# user fzf module
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+```
 
 ## Who ?
 Mainly useful for server and headless system where you don't want zsh,

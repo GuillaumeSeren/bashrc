@@ -8,24 +8,25 @@
 # This bashrc configuration is broken into small files.
 # ---------------------------------------------
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# # If not running interactively, don't do anything
+# [ -z "$PS1" ] && return
 
 # First resolve the bashrc link
 BASH_REAL_PATH="$(dirname "$(readlink -f ~/.bashrc)")"
+USER_REAL_PATH="$BASH_REAL_PATH/user.d"
 
 # source set file
-[ -f "$BASH_REAL_PATH"/bashrc.set.sh ]      && source "$BASH_REAL_PATH"/bashrc.set.sh
+[ -f "$BASH_REAL_PATH"/bashrc.set.sh ]        && source "$BASH_REAL_PATH"/bashrc.set.sh
 # source aliases file
-[ -f "$BASH_REAL_PATH"/bashrc.alias.sh ]    && source "$BASH_REAL_PATH"/bashrc.alias.sh
+[ -f "$BASH_REAL_PATH"/bashrc.alias.sh ]      && source "$BASH_REAL_PATH"/bashrc.alias.sh
 # source history file
-[ -f "$BASH_REAL_PATH"/bashrc.history.sh ]  && source "$BASH_REAL_PATH"/bashrc.history.sh
+[ -f "$BASH_REAL_PATH"/bashrc.history.sh ]    && source "$BASH_REAL_PATH"/bashrc.history.sh
 # source prompt file
-[ -f "$BASH_REAL_PATH"/bashrc.prompt.sh ]   && source "$BASH_REAL_PATH"/bashrc.prompt.sh
+[ -f "$BASH_REAL_PATH"/bashrc.prompt.sh ]     && source "$BASH_REAL_PATH"/bashrc.prompt.sh
 # source function file
-[ -f "$BASH_REAL_PATH"/bashrc.function.sh ] && source "$BASH_REAL_PATH"/bashrc.function.sh
+[ -f "$BASH_REAL_PATH"/bashrc.function.sh ]   && source "$BASH_REAL_PATH"/bashrc.function.sh
 # source local user file
-[ -f "$BASH_REAL_PATH"/bashrc.local.sh ]    && source "$BASH_REAL_PATH"/bashrc.local.sh
+[ -f "$BASH_REAL_PATH"/bashrc.local.sh ]      && source "$BASH_REAL_PATH"/bashrc.local.sh
 
-# @FXIME: This go in the user config
-[ -f ~/.fzf.bash ]                          && source ~/.fzf.bash
+# Add user config if defined
+[ -f "$USER_REAL_PATH"/bashrc.local-user.sh ] && source "$USER_REAL_PATH"/bashrc.local-user.sh
