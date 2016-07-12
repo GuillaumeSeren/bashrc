@@ -12,6 +12,11 @@ I switched some time ago to zsh but I still use bash on most remote server.
 I like the `KISS` mantra (*Keep It Simple, Stupid*),
 so I try to get quality and efficient solution.
 
+## Pattern
+I define an alias **up** to upgrade the system, I try to follow good practice,
+and so I add some more check to restart upgraded service ([checkrestart][checkrestart]) and
+check security ([glsa-check][glsa]).
+
 ## Usage & Installation :
 You can clone this repos in your home directory, like:
 ```
@@ -70,3 +75,7 @@ feel free to fork this project and fill a __Pull Request__.
 
 ## Licence
 The project is GPLv3.
+
+
+[glsa]: https://www.gentoo.org/support/security/
+[checkrestart]: http://arcdraco.net/checkrestart
