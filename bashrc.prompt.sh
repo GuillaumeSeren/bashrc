@@ -1,3 +1,4 @@
+#!/bin/bash
 # ---------------------------------------------
 # @author Guillaume Seren
 # source  https://github.com/GuillaumeSeren/bashrc

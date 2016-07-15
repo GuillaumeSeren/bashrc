@@ -1,3 +1,4 @@
+#!/bin/bash
 # Source the lib-gentoo
 [ -f "$BASH_REAL_PATH"/bashrc.lib-gentoo.sh ] && source "$BASH_REAL_PATH"/bashrc.lib-gentoo.sh
 

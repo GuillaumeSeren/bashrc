@@ -25,6 +25,7 @@ $ git clone https://github.com/GuillaumeSeren/bashrc ~/.bashrc.d
 $ ln -s ~/.bashrc.d/bashrc.sh ~/.bashrc
 # Then reload your bash profile
 $ . ~/.bashrc
+# To enable advanced feature go to 'Personalize' section
 ```
 
 ## Structure:
