@@ -132,6 +132,8 @@ function BashUpgrade() {
         # Reload !
         echo "Reloading Bash configuration"
         bash ~/.bashrc
+        # Roll back to previous location
+        cd -
     else
         echo "No upgrade available"
     fi
