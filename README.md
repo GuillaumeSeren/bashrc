@@ -10,11 +10,12 @@ I switched some time ago to zsh but I still use bash on most remote server.
 
 ## Philosophy :
 I like the `KISS` mantra (*Keep It Simple, Stupid*),
-so I try to get quality and efficient solution.
+so I try to get simple and efficient solution.
 
 ## Pattern
-I define an alias **up** to upgrade the system, I try to follow good practice,
-and so I add some more check to restart upgraded service ([checkrestart][checkrestart]) and
+I define an alias **up** to upgrade the system, and I try to test the system and
+upgraded services to check security and consistency,
+check to restart upgraded service ([checkrestart][checkrestart]) and
 check security ([glsa-check][glsa]).
 
 ## Usage & Installation :
@@ -43,7 +44,7 @@ File                          | Description
 `user.d/bashrc.local-user.sh` | User config file, customize and more.
 
 ## Personalize
-You can add your own tweaks, and overide any alias / functions,
+You can add your own tweaks, and override any alias / functions,
 defined in the basic setup, here how to do it.
 
 Create a file named bashrc.local-user.sh in the user config directory 'user.d'
@@ -60,9 +61,6 @@ Below a sample of a bashrc.local-user.sh
 
 # Define an awesome alias
 alias hello="echo hello from my user alias"
-
-# user fzf module
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 ```
 
 ## Who ?
