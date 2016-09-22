@@ -9,8 +9,8 @@
 # This bashrc configuration is broken into small files.
 # ---------------------------------------------
 
-# # If not running interactively, don't do anything
-# [ -z "$PS1" ] && return
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # First resolve the bashrc link
 BASH_REAL_PATH="$(dirname "$(readlink -f ~/.bashrc)")"
@@ -31,3 +31,6 @@ USER_REAL_PATH="$BASH_REAL_PATH/user.d"
 
 # Add user config if defined
 [ -f "$USER_REAL_PATH"/bashrc.local-user.sh ] && source "$USER_REAL_PATH"/bashrc.local-user.sh
+
+# Source fzf if existing
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
