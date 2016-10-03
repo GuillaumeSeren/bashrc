@@ -9,7 +9,7 @@
 # Most of the preset are for the admin of the system
 # ---------------------------------------------
 
-# @TODO Add a check on external dependencies
+# @TODO Add a check on external dependencies like sudo
 # up is upgrade alias
 alias up='upDate && upGrade && upRebuild && upClean && upCheck'
 alias upDate='sudo emerge --sync && sudo eix-update'
