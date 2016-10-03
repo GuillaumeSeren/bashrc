@@ -29,19 +29,28 @@ $ . ~/.bashrc
 # To enable advanced feature go to 'Personalize' section
 ```
 
+## Upgrading :
+After some time, you can check if there is a new version available, by:
+```
+$ BashUpgrade
+No upgrade available
+```
+
 ## Structure:
 The Bash configuration is broken into several files:
 
 File                          | Description
 ------------------------------|------------
-`.bashrc.sh`                  | Central **bash** file, source the others.
-`.bashrc.set.sh`              | **Set** the general variables.
-`.bashrc.alias.sh`            | Define the **alias**.
-`.bashrc.function.sh`         | Add the **functions**.
-`.bashrc.history.sh`          | Configure the **history** feature.
-`.bashrc.prompt.sh`           | Set the **prompt**.
-`.bashrc.local.sh`            | Ass some **user configuration**.
+`bashrc.sh`                  | Central **bash** file, source the others.
+`bashrc.set.sh`              | **Set** the general variables.
+`bashrc.alias.sh`            | Define the **alias**.
+`bashrc.function.sh`         | Add the **functions**.
+`bashrc.history.sh`          | Configure the **history** feature.
+`bashrc.prompt.sh`           | Set the **prompt**.
+`bashrc.local.sh`            | Ass some **user configuration**.
 `user.d/bashrc.local-user.sh` | User config file, customize and more.
+`bashrc.lib-gentoo.sh`        | Gentoo Os bash aliases.
+`bashrc.lib-debian.sh`        | Debian Os bash aliases.
 
 ## Personalize
 You can add your own tweaks, and override any alias / functions,
