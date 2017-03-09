@@ -28,7 +28,6 @@ USER_REAL_PATH="$BASH_REAL_PATH/user.d"
 [ -f "$BASH_REAL_PATH"/bashrc.function.sh ]   && source "$BASH_REAL_PATH"/bashrc.function.sh
 # source local user file
 [ -f "$BASH_REAL_PATH"/bashrc.local.sh ]      && source "$BASH_REAL_PATH"/bashrc.local.sh
-
 # Add user config if defined
 [ -f "$USER_REAL_PATH"/bashrc.local-user.sh ] && source "$USER_REAL_PATH"/bashrc.local-user.sh
 

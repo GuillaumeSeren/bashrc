@@ -94,7 +94,7 @@ function BashUpgradeNeeded() {
         BASH_CONFIG_FETCH_SILENT="$1"
     fi
     # move to the right place
-    cd $BASH_REAL_PATH
+    cd "${BASH_REAL_PATH}" || exit
     BASH_CONFIG_HEAD_HASH=$(git log HEAD..origin/master --oneline)
     if [[ "${BASH_CONFIG_HEAD_HASH}" != "" ]];then
         # You are NOT up to date
@@ -127,13 +127,13 @@ function BashUpgrade() {
         #@TODO: Add a function to count upgrade before doing it
         echo "Upgrading your BashConfig"
         # move to the right place
-        cd $BASH_REAL_PATH
+        cd "${BASH_REAL_PATH}" || exit
         git pull origin master
         # Reload !
         echo "Reloading Bash configuration"
         bash ~/.bashrc
         # Roll back to previous location
-        cd -
+        cd - || exit
     else
         echo "No upgrade available"
     fi
