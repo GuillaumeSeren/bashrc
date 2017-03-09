@@ -33,7 +33,15 @@ $ . ~/.bashrc
 After some time, you can check if there is a new version available, by:
 ```
 $ BashUpgrade
-No upgrade available
+Upgrading your BashConfig
+From https://github.com/GuillaumeSeren/bashrc
+ * branch            master     -> FETCH_HEAD
+Updating 90d8d15..9acf471
+Fast-forward
+ README.md            | 23 ++++++++++++++++-------
+ bashrc.lib-gentoo.sh |  6 +++---
+ 2 files changed, 19 insertions(+), 10 deletions(-)
+Reloading Bash configuration
 ```
 
 ## Structure:
@@ -41,13 +49,13 @@ The Bash configuration is broken into several files:
 
 File                          | Description
 ------------------------------|------------
-`bashrc.sh`                  | Central **bash** file, source the others.
-`bashrc.set.sh`              | **Set** the general variables.
-`bashrc.alias.sh`            | Define the **alias**.
-`bashrc.function.sh`         | Add the **functions**.
-`bashrc.history.sh`          | Configure the **history** feature.
-`bashrc.prompt.sh`           | Set the **prompt**.
-`bashrc.local.sh`            | Ass some **user configuration**.
+`bashrc.sh`                   | Central **bash** file, source the others.
+`bashrc.set.sh`               | **Set** the general variables.
+`bashrc.alias.sh`             | Define the **alias**.
+`bashrc.function.sh`          | Add the **functions**.
+`bashrc.history.sh`           | Configure the **history** feature.
+`bashrc.prompt.sh`            | Set the **prompt**.
+`bashrc.local.sh`             | Ass some **user configuration**.
 `user.d/bashrc.local-user.sh` | User config file, customize and more.
 `bashrc.lib-gentoo.sh`        | Gentoo Os bash aliases.
 `bashrc.lib-debian.sh`        | Debian Os bash aliases.
