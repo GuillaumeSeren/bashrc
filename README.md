@@ -5,11 +5,11 @@ Bash configuration
 ![alt tag](https://github.com/GuillaumeSeren/bashrc/blob/master/img/bashconfig_prompt.png)
 
 ## Why ?
-Because I am lazy of copying it everywhere,
-I switched some time ago to zsh but I still use bash on most remote server.
+Because I am lazy and like to find my alias back on different machines and os,
+I switched some time ago to zsh but I still use bash on remote server.
 
 ## Philosophy :
-I like the `KISS` mantra (*Keep It Simple, Stupid*),
+I like the `KISS` principle (*Keep It Simple, Stupid*),
 so I try to get simple and efficient solution.
 
 ## Pattern
