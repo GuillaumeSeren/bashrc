@@ -49,7 +49,7 @@ alias dud='du --max-depth=0'
 # df
 alias df='df -kTh'
 
-# shortcut
+# extras aliases
 alias ps='ps aux'
 alias cp='cp -i'
 alias mv='mv -iv'
