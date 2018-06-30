@@ -5,8 +5,8 @@ Bash configuration
 ![alt tag](https://github.com/GuillaumeSeren/bashrc/blob/master/img/bashconfig_prompt.png)
 
 ## Why ?
-Because I am lazy and like to find my alias back on different machines and os,
-I switched some time ago to zsh but I still use bash on remote server.
+Because I am lazy and like to find my aliases back on different system,
+some times ago I switched to zsh on my main rig,but I still use bash on remote server.
 
 ## Philosophy :
 I like the `KISS` principle (*Keep It Simple, Stupid*),
@@ -66,7 +66,7 @@ defined in the basic setup, here how to do it.
 
 Create a file named bashrc.local-user.sh in the user config directory 'user.d'
 ```
-$ touch user.d/bashrc.local-user.sh
+$ touch ~/.bashrc.d/user.d/bashrc.local-user.sh
 ```
 After in the file you can source some lib, like Debian of Gentoo file,
 and define your own alias and functions.
