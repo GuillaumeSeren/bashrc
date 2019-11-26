@@ -11,8 +11,8 @@
 
 # @TODO Add a check on external dependencies like sudo
 # up is upgrade alias
-alias up='upGrade && upRebuild && upClean && upCheck'
 alias upGrade='sudo emerge --sync && sudo eix-update && sudo emerge -avuDN --tree --with-bdeps y --keep-going world'
 alias upRebuild='sudo revdep-rebuild -v && sudo revdep-rebuild && sudo emerge --update --newuse --deep @world && sudo emerge @module-rebuild && sudo emerge @preserved-rebuild'
 alias upClean='sudo eclean-dist -d && sudo emerge -av --depclean'
 alias upCheck='sudo env-update && eix-test-obsolete && sudo needrestart && sudo glsa-check --test all'
+alias up='upGrade && upRebuild && upClean && upCheck'
