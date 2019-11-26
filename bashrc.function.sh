@@ -18,41 +18,6 @@ function Repeat() {
     done
 }
 
-# FUNCTION Extract() {{{1
-# Unpack the file given in arg
-function Extract() {
-    local FILENAME="${1}"
-    local FILEEXTENSION=`echo ${1} | cut -d. -f2-`
-    case "$FILEEXTENSION" in
-        tar)
-            tar xvf "$FILENAME";;
-        tar.gz)
-            tar xzvf "$FILENAME";;
-        tgz)
-            tar xzvf "$FILENAME";;
-        gz)
-            gunzip "$FILENAME";;
-        tbz)
-            tar xjvf "$FILENAME";;
-        tbz2)
-            tar xjvf "$FILENAME";;
-        tar.bz2)
-            tar xjvf "$FILENAME";;
-        tar.bz)
-            tar xjvf "$FILENAME";;
-        bz2)
-            bunzip2 "$FILENAME";;
-        tar.Z)
-            tar xZvf "$FILENAME";;
-        Z)
-            uncompress "$FILENAME";;
-        zip)
-            unzip "$FILENAME";;
-        rar)
-            unrar x "$FILENAME";;
-    esac
-}
-
 # FUNCTION BashUpdate() {{{1
 # Refresh the git repo for news
 function BashUpdate() {

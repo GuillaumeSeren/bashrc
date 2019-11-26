@@ -15,7 +15,7 @@ so I try to get simple and efficient solution.
 ## Pattern
 I define an alias **up** to upgrade the system, and I try to test the system and
 upgraded services to check security and consistency,
-check to restart upgraded service ([checkrestart][checkrestart]) and
+check to restart upgraded service ([needrestart][needrestart]) and
 check security ([glsa-check][glsa]).
 
 ## Usage & Installation :
@@ -55,7 +55,6 @@ File                          | Description
 `bashrc.function.sh`          | Add the **functions**.
 `bashrc.history.sh`           | Configure the **history** feature.
 `bashrc.prompt.sh`            | Set the **prompt**.
-`bashrc.local.sh`             | Ass some **user configuration**.
 `user.d/bashrc.local-user.sh` | User config file, customize and more.
 `bashrc.lib-gentoo.sh`        | Gentoo Os bash aliases.
 `bashrc.lib-debian.sh`        | Debian Os bash aliases.
@@ -80,6 +79,17 @@ Below a sample of a bashrc.local-user.sh
 alias hello="echo hello from my user alias"
 ```
 
+## Dependencies
+Here the list of additionnal dependencies (on top of bash), and why
+
+Program | Why
+--------|----
+gsla | Gentoo Linux Security Advisories, check security vulnerability on gentoo.
+needrestart | Check for program and service to restart.
+sed | Some alias use sed (like removeemptylines).
+tput | Used to manage the prompt color.
+
+
 ## Who ?
 Mainly useful for server and headless system where you don't want zsh,
 it can also be a good starting point for beginners, and maybe __fit your need__,
@@ -94,4 +104,4 @@ The project is GPLv3.
 
 
 [glsa]: https://www.gentoo.org/support/security/
-[checkrestart]: http://arcdraco.net/checkrestart
+[needrestart]: https://github.com/liske/needrestart
