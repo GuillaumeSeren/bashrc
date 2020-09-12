@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ---------------------------------------------
 # @author Guillaume Seren
 # source  https://github.com/GuillaumeSeren/bashrc
@@ -8,6 +8,7 @@
 # prompt definition file
 # ---------------------------------------------
 
+# function __prompt_command() {{{1
 function __prompt_command() {
     # This needs to be first
     local EXIT="$?"
@@ -77,5 +78,8 @@ function __prompt_command() {
     # Echo the hostname, for screen/tmux
     echo -ne "\033k$HOSTNAME\033\\"
 }
+# }}}
 # Function to gen PS1 after CMDs
 export PROMPT_COMMAND=__prompt_command
+
+# vim: set ft=sh ts=2 sw=2 tw=80 foldmethod=marker et :

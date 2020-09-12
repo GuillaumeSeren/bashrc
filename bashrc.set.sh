@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ---------------------------------------------
 # @author Guillaume Seren
 # source  https://github.com/GuillaumeSeren/bashrc
@@ -18,3 +18,10 @@ shopt -s checkwinsize
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  [ -f ~/.dir_colors ] && eval "$(dircolors ~/.dir_colors)"
+fi
+
+# vim: set ft=sh ts=2 sw=2 tw=80 foldmethod=marker et :
