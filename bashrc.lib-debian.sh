@@ -10,7 +10,4 @@
 # ---------------------------------------------
 
 # @FIXME Check if checkrestart is available before using it
-alias up='sudo aptitude update && sudo aptitude safe-upgrade && sudo needrestart'
-alias cl='sudo aptitude remove --purge `deborphan` && sudo aptitude autoclean'
-alias se='sudo aptitude search'
-alias ins='sudo aptitude install'
+alias up='sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo needrestart'
