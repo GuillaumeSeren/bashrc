@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ---------------------------------------------
 # @author Guillaume Seren
 # source  https://github.com/GuillaumeSeren/bashrc
@@ -9,7 +9,6 @@
 # ---------------------------------------------
 
 # don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoreboth
@@ -19,3 +18,5 @@ export HISTFILESIZE=10000
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# vim: set ft=sh ts=2 sw=2 tw=80 foldmethod=marker et :

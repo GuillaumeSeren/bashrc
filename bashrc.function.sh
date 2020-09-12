@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ---------------------------------------------
 # @author Guillaume Seren
 # source  https://github.com/GuillaumeSeren/bashrc
@@ -7,7 +7,6 @@
 #
 # Bash Function definition file
 # ---------------------------------------------
-
 # FUNCTION Repeat() {{{1
 # repeat n times command
 function Repeat() {
@@ -17,7 +16,6 @@ function Repeat() {
         eval "$@";
     done
 }
-
 # FUNCTION BashUpdate() {{{1
 # Refresh the git repo for news
 function BashUpdate() {
@@ -50,7 +48,6 @@ function BashUpdate() {
         echo "$BASH_CONFIG_FETCH_STATUS"
     fi
 }
-
 # FUNCTION BashUpgradeNeeded() {{{1
 # Check if you need/should upgrade
 function BashUpgradeNeeded() {
@@ -80,7 +77,6 @@ function BashUpgradeNeeded() {
         fi
     fi
 }
-
 # FUNCTION BashUpgrade() {{{1
 # Upgrade your BashConfig
 function BashUpgrade() {
@@ -103,3 +99,65 @@ function BashUpgrade() {
         echo "No upgrade available"
     fi
 }
+# FUNCTION GeneratePassword() {{{1
+#================================================
+# param: STRING $password
+# param: STRING $RANDOM
+# param: STRING $password_ref
+#++++++++++++++++++++++++++++++++++++++++++++++++
+# Description :
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Génére un mot de passe,
+# si l'utilisateur n'en à pas fourni.
+#################################################
+function GeneratePassword()
+{
+    # Some help
+    if [[ "$1" == "-h" ||
+        "$1" == "?" ]]; then
+        echo "generatePassword(): Generate Random Password from shell"
+        echo "Default lenght of password is 10 and list 10"
+        echo "Set your own by adding your own like generatePassword 30 50"
+        bArgHelp=1
+        return 1
+    fi
+    # The first param is lenght
+    # Should be int, greater than 0
+    if [[ -n "$1" &&
+          "$1" != "false" &&
+          "$1" =~ ^[-+]?[0-9]+$ &&
+          "$1" -gt 0 ]]; then
+        iPasswordLenght="${1}"
+        #@TODO: We need to double check that it is a int
+        #@TODO: We need the size to be >0 add the check.
+    else
+        # Default lenght password
+        iPasswordLenght=10
+        # Only alert if a value was given
+        if [[ -n "$1" ]]; then
+            bArgPassLenght=1
+            echo "$1 is not a valid password lenght value"
+            echo "Using default password lenght of: $iPasswordLenght"
+        fi
+    fi
+    # The second param is size of the output list
+    if [[ -n "$2" && \
+          "$2" != "false" && \
+          "$2" =~ ^[-+]?[0-9]+$ && \
+          "$2" -gt 0 ]]; then
+        iOutputLenght="${2}"
+    else
+        # Default lenght ouput
+        iOutputLenght=10
+        if [[ -n "$2" ]]; then
+            echo "$2 is not a valid list lenght value"
+            echo "Using default list lenght of: $iOutputLenght"
+        fi
+    fi
+    for ((j=1; j <= $iOutputLenght; j++)); do
+        local sPassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-_!@#$%^&*()_+{}|:<>?=' | fold -w $iPasswordLenght | head -n 1 )
+        echo "${sPassword}"
+    done
+}
+# }}}
+# vim: set ft=sh ts=2 sw=2 tw=80 foldmethod=marker et :

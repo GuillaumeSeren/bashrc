@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ---------------------------------------------
 # @author Guillaume Seren
 # source  https://github.com/GuillaumeSeren/bashrc
