@@ -11,4 +11,4 @@
 
 # @TODO Add a check on external dependencies like sudo
 # up is upgrade alias
-alias up='sudo genup && sudo needrestart'
+alias up='sudo emerge --sync && sudo emerge --ask --verbose --update --deep --changed-use @world && sudo emerge @preserved-rebuild && sudo emerge --depclean && sudo needrestart'
