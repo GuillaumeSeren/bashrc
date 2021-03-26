@@ -160,4 +160,87 @@ function GeneratePassword()
     done
 }
 # }}}
+# FUNCTION PathAppend() {{{1
+#================================================
+# $1 param: STRING|list dir to add
+#++++++++++++++++++++++++++++++++++++++++++++++++
+# Description :
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Stolen from this nice answer on stackexchange.com
+# https://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path/480523#480523
+#
+# Append each passed existing directory to the current user's ${PATH} in a
+# safe manner silently ignoring:
+#
+# * Relative directories (i.e., *NOT* prefixed by the directory separator).
+# * Duplicate directories (i.e., already listed in the current ${PATH}).
+# * Nonextant directories.
+#################################################
+function PathAppend()
+{
+  # For each passed dirname...
+  local dirname
+  for   dirname; do        # Strip the trailing directory separator if any from this dirname,
+    # reducing this dirname to the canonical form expected by the
+    # test for uniqueness performed below.
+    dirname="${dirname%/}"
+
+    # Alert user if dirname
+    [[ ! -d "${dirname}" ]] && echo "PathAppend: Directory not exist ${dirname}"
+
+    # If this dirname is either relative, duplicate, or nonextant, then
+    # silently ignore this dirname and continue to the next. Note that the
+    # extancy test is the least performant test and hence deferred.
+    [[ "${dirname:0:1}" == '/' &&
+      ":${PATH}:" != *":${dirname}:"* &&
+      -d "${dirname}" ]] || continue
+
+    # Else, this is an existing absolute unique dirname. In this case,
+    # append this dirname to the current ${PATH}.
+    PATH="${PATH}:${dirname}"
+  done
+
+  # Strip an erroneously leading delimiter from the current ${PATH} if any,    # a common edge case when the initial ${PATH} is the empty string.
+  PATH="${PATH#:}"
+
+  # Export the current ${PATH} to subprocesses. Although system-wide scripts
+  # already export the ${PATH} by default on most systems, "Bother free is
+  # the way to be."
+  export PATH
+}
+# FUNCTION PathPrepend() {{{1
+#================================================
+# $1 param: STRING|list dir to add
+#++++++++++++++++++++++++++++++++++++++++++++++++
+# Description :
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Stolen from this nice answer on stackexchange.com
+# https://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path/480523#480523
+#
+# Prepend each passed existing directory to the current user's ${PATH} in a
+# safe manner silently ignoring:
+#
+# * Relative directories (i.e., *NOT* prefixed by the directory separator).
+# * Duplicate directories (i.e., already listed in the current ${PATH}).
+# * Nonextant directories.
+#################################################
+function PathPrepend()
+{
+    local dirname
+    for dirname in "${@}"; do
+      dirname="${dirname%/}"
+
+      # Alert user if dirname
+      [[ ! -d "${dirname}" ]] && echo "PathPrepend: Directory not exist ${dirname}"
+
+      [[ "${dirname:0:1}" == '/' &&
+          ":${PATH}:" != *":${dirname}:"* &&
+          -d "${dirname}" ]] || continue
+
+      PATH="${dirname}:${PATH}"
+    done
+
+    PATH="${PATH%:}"
+    export PATH
+}
 # vim: set ft=sh ts=2 sw=2 tw=80 foldmethod=marker et :
