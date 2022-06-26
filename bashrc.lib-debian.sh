@@ -9,5 +9,10 @@
 # Most of the preset are for the admin of the system
 # ---------------------------------------------
 
-# @FIXME Check if checkrestart is available before using it
-alias up='sudo apt update && sudo apt upgrade && sudo needrestart'
+# @TODO Add a check on external dependencies like sudo, needrestart
+# up is upgrade alias
+alias upDate='sudo apt update'
+alias upGrade='sudo apt upgrade && sudo apt dist-upgrade'
+alias upClean='sudo apt autoremove && sudo apt clean'
+alias upRestart='sudo needrestart'
+alias up="upDate && upGrade && upClean && upRestart"
