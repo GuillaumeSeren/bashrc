@@ -9,6 +9,10 @@
 # Most of the preset are for the admin of the system
 # ---------------------------------------------
 
-# @TODO Add a check on external dependencies like sudo
+# @TODO Add a check on external dependencies like sudo, needrestart
 # up is upgrade alias
-alias up='sudo emerge --sync && sudo emerge --ask --verbose --update --deep --changed-use @world && sudo emerge @preserved-rebuild && sudo emerge --depclean && sudo needrestart'
+alias upDate='sudo emerge --sync'
+alias upGrade='sudo emerge --ask --verbose --update --deep --changed-use @world && sudo emerge @preserved-rebuild'
+alias upClean='sudo emerge --depclean && sudo eclean-dist -d && sudo eclean-pkg -d'
+alias upRestart='sudo needrestart'
+alias up="upDate && upGrade && upClean && upRestart"
