@@ -8,6 +8,29 @@
 # prompt definition file
 # ---------------------------------------------
 
+function timer_now {
+    date +%s
+}
+
+function timer_start {
+    timer_start=${timer_start:-$(timer_now)}
+}
+
+function timer_stop {
+    local delta_sec=$((($(timer_now) - $timer_start)))
+    # inspirations:
+    # https://stackoverflow.com/questions/1862510/how-can-the-last-commands-wall-time-be-put-in-the-bash-prompt#1862762
+    # https://github.com/popstas/zsh-command-time
+    # https://github.com/Powerlevel9k/powerlevel9k/pull/402/files
+    # https://stackoverflow.com/questions/12199631/convert-seconds-to-hours-minutes-seconds
+    # @TODO Extract minimal duration as a param
+    if ((delta_sec > 0)); then
+      # @TODO Maybe we switch iso8601 duration (https://en.wikipedia.org/wiki/ISO_8601#Durations)
+      timer_show="\nExecution time was: $(TZ=GMT; date '+%Hh:%Mm:%Ss' -u -d @$delta_sec )\n"
+    fi
+    unset timer_start
+}
+
 # function __prompt_command() {{{1
 function __prompt_command() {
     # This needs to be first
@@ -72,13 +95,15 @@ function __prompt_command() {
         gitStatus=''
     fi
 
+    timer_stop
     # Prompt
-    PS1="\[$BLUE\](\[$NORMAL\]${bashStatus}\[$BLUE\]|${bashNumber}\[$BLUE\])\[$YELLOW\]\u\[$BLUE\]@\[$YELLOW\]\h\[$BLUE\]:\[$YELLOW\]\w $gitStatus\[$BLUE\]\n$ \[$NORMAL\]"
+    PS1="${timer_show}\[$BLUE\](\[$NORMAL\]${bashStatus}\[$BLUE\]|${bashNumber}\[$BLUE\])\[$YELLOW\]\u\[$BLUE\]@\[$YELLOW\]\h\[$BLUE\]:\[$YELLOW\]\w $gitStatus\[$BLUE\]\n$ \[$NORMAL\]"
 
     # Echo the hostname, for screen/tmux
     echo -ne "\033k$HOSTNAME\033\\"
 }
 # }}}
+trap 'timer_start' DEBUG
 # Function to gen PS1 after CMDs
 export PROMPT_COMMAND=__prompt_command
 
